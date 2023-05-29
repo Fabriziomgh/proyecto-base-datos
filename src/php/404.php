@@ -16,7 +16,7 @@
 			<h2 class="mb-8 font-extrabold text-9xl ">
 				404
 			</h2>
-			<p class="text-2xl font-semibold md:text-3xl">Lo sentimos, no hemos podido encontrar esta página.</p>
+			<p class="text-2xl font-semibold md:text-3xl">Loo sentimos, no hemos podido encontrar esta página.</p>
 			<hr class="mt-4 mb-8 ">
 			<a href="../../index.php" class="bg-purple-600 px-8 py-3 font-semibold rounded  ">Volver a la página de inicio</a>
 		</div>
