@@ -19,12 +19,19 @@ if (isset($_POST['reservar'])) {
     }
     $sql = null;
 
+
+
+    if (!$mesa == "") {
+        $sql = "INSERT INTO reservas (fecha, hora, mesa, id_usuario) VALUES ('$fecha', '$hora','$mesa','$id_user')";
+        $rest = mysqli_query($conexion, $sql);
+    }
+
+
     $sqlMesa = "SELECT id FROM mesas where mesa='$mesa'";
     $respuestaMesa = mysqli_query($conexion, $sqlMesa);
     $contarMesa = mysqli_num_rows($respuestaMesa);
 
-    $sql = "INSERT INTO reservas (fecha, hora, mesa, id_usuario) VALUES ('$fecha', '$hora','$mesa','$id_user')";
-    $rest = mysqli_query($conexion, $sql);
+
     if ($rest && $contarMesa > 0) {
         $row = mysqli_fetch_assoc($respuestaMesa);
         $id_mesa = $row["id"];
@@ -36,7 +43,7 @@ if (isset($_POST['reservar'])) {
       </div>';
     } else {
         $msj = '<div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 " role="alert">
-        <span class="font-medium">Danger alert!</span> Change a few things up and try submitting again.
+        <span class="font-medium">Lo sentimos!</span> Ya no quedan mesas disponibles.
       </div>';
     }
 }
@@ -107,38 +114,39 @@ if (isset($_POST['reservar'])) {
 
                     $rest1 = mysqli_query($conexion, $sql1);
 
+
                     if (mysqli_num_rows($rest1) > 0) {
                         foreach ($rest1 as $reserva) {
                             $newDate = date("d/m/Y", strtotime($reserva['fecha']));
                     ?>
-                            <div class="w-64 p-4 bg-white shadow-lg rounded-2xl 
-                        <p class=" mb-4 text-xl font-medium text-gray-800 ">
-                            Fecha
-                        </p>
-                        <p class=" text-3xl font-bold text-gray-900 ">
-                        <?php echo $newDate ?>
-                            
-                        </p>
-                        
-                        <ul class=" w-full mt-6 mb-6 text-sm text-gray-600 ">
-                            <li class=" gap-2 mb-3 flex items-center ">
-                                <img src=" ../assets/svg/check.svg">
-                                Hora: <?php echo $reserva['hora'] ?>
-                                </li>
-                                <li class=" gap-2 mb-3 flex items-center ">
-                                    <img src=" ../assets/svg/check.svg">
+                            <div class="w-64 p-4 bg-white shadow-lg rounded-2xl ">
+                                <p class=" mb-4 text-xl font-medium text-gray-800 ">
+                                    Fecha
+                                </p>
+                                <p class=" text-3xl font-bold text-gray-900 ">
+                                    <?php echo $newDate ?>
 
-                                    <?php echo ucfirst(strtolower($reserva['mesa'])) ?>
-                                </li>
+                                </p>
+
+                                <ul class=" w-full mt-6 mb-6 text-sm text-gray-600 ">
+                                    <li class=" gap-2 mb-3 flex items-center ">
+                                        <img src=" ../assets/svg/check.svg">
+                                        Hora: <?php echo $reserva['hora'] ?>
+                                    </li>
+                                    <li class=" gap-2 mb-3 flex items-center ">
+                                        <img src=" ../assets/svg/check.svg">
+
+                                        <?php echo ucfirst(strtolower($reserva['mesa'])) ?>
+                                    </li>
 
                                 </ul>
                                 <div class="flex gap-2">
                                     <button type="button" class="py-2 px-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                         Editar
                                     </button>
-                                    <button type="button" class="py-2 px-4 bg-red-400 hover:bg-red-600 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                    <a type="button" href="<?php echo 'eliminar.php?id=' . $reserva["id"]; ?>" class=" py-2 px-4 bg-red-400 hover:bg-red-600 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ">
                                         Cancelar
-                                    </button>
+                                    </a>
                                 </div>
                             </div><?php
 
@@ -153,7 +161,7 @@ if (isset($_POST['reservar'])) {
 
                 </div>
             </div>
-            <div class="relative mt-10 -mx-4 md:-mx-12 lg:mt-0 lg:col-start-1">
+            <div class=" relative mt-10 -mx-4 md:-mx-12 lg:mt-0 lg:col-start-1">
                 <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <div class="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0  ">
                         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -186,14 +194,18 @@ if (isset($_POST['reservar'])) {
                                     $consulta = "SELECT * FROM `mesas` ";
                                     $ejecutarConsulta = mysqli_query($conexion, $consulta);
 
+
+
                                     if (mysqli_num_rows($ejecutarConsulta) > 0) {
                                     ?>
                                         <label for="mesas" class="block mb-2 text-sm font-medium text-gray-900 ">Mesas disponibles</label>
                                         <select required name="mesas" id="mesas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                            <option selected>Seleccione una opción.</option>
+                                            <option value="" selected>Seleccione una opción.</option>
                                             <?php
                                             foreach ($ejecutarConsulta as $mesas) {
                                                 $m = ucfirst(strtolower($mesas['mesa']));
+
+
                                                 if ($mesas['disponible'] == 'true') {
                                             ?>
                                                     <option value="<?php echo $mesas['mesa'] ?>"><?php echo $m ?></option>
