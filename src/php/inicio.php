@@ -17,8 +17,15 @@ require_once './session/session_start.php';
   <title>Restaurante - </title>
 </head>
 
-<body>
-  <header class="text-sm mb-6 font-medium text-center text-gray-500 border-b border-gray-200 ">
+<body style=" background-image: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, 0.9)
+        ),
+        url('../assets/img/fondo.jpg');
+    background-size: cover;
+    background-position: center; ">
+  <header class="bg-white text-sm mb-6 font-medium text-center text-gray-500 border-b border-gray-200 ">
     <nav class="flex justify-around items-center">
 
       <span class="text-2xl">
@@ -52,7 +59,7 @@ require_once './session/session_start.php';
 
   <div class="text-center  text-3xl font-medium text-purple-600">Bienvenido</div>
 
-  <div class="relative max-w-screen-xl p-4 px-4 mx-auto bg-white  sm:px-6 lg:px-8 py-26 lg:mt-20">
+  <div class="relative max-w-screen-xl p-4 px-4 mx-auto   sm:px-6 lg:px-8 py-26 lg:mt-20">
     <div class="relative">
       <div class="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
         <div class="ml-auto lg:col-start-2 lg:max-w-2xl">
@@ -62,7 +69,7 @@ require_once './session/session_start.php';
           <h4 class="mt-2 text-2xl font-extrabold leading-8 text-gray-900  sm:text-3xl sm:leading-9">
             La interacción entre nuestro talentoso equipo de restaurante es el ingrediente secreto de nuestro éxito.
           </h4>
-          <p class="mt-4 text-lg leading-6 text-gray-500 ">
+          <p class="mt-4 text-xl leading-6 font-bold  text-gray-900 ">
             ¡Descubre el sabor supremo en nuestro restaurante! Deliciosos platos gourmet que deleitarán tus sentidos.
           </p>
           <ul class="gap-6 mt-8 md:grid md:grid-cols-2">
@@ -74,7 +81,7 @@ require_once './session/session_start.php';
                     </path>
                   </svg>
                 </span>
-                <span class="ml-4 text-base font-medium leading-6 text-gray-500 ">
+                <span class="ml-4 text-base font-medium leading-6 text-gray-900 ">
                   Reservas
                 </span>
               </div>
@@ -87,7 +94,7 @@ require_once './session/session_start.php';
                     </path>
                   </svg>
                 </span>
-                <span class="ml-4 text-base font-medium leading-6 text-gray-500 ">
+                <span class="ml-4 text-base font-medium leading-6 text-gray-900 ">
                   Autogestión
                 </span>
               </div>

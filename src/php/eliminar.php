@@ -14,11 +14,29 @@ if (isset($_GET["id"])) {
     if ($contar > 0) {
         $row = mysqli_fetch_assoc($rest);
         $id_user = $row["id"];
-    } else {
-        $id_user = 0;
     }
+
+
+    $sqlMesa = "SELECT id_mesa FROM reservas where id='{$reserva}' and id_usuario='{$id_user}'";
+    $restMesa = mysqli_query($conexion, $sqlMesa);
+
+    if (mysqli_num_rows($restMesa) > 0) {
+        $row = mysqli_fetch_assoc($restMesa);
+        $mesa = $row["id_mesa"];
+    }
+
+    $sqlUpdateMesa =  "UPDATE mesas SET disponible='true'  WHERE id='{$mesa}'";
+    mysqli_query($conexion, $sqlUpdateMesa);
+
 
     $sql = "DELETE FROM reservas WHERE id='{$reserva}' AND id_usuario='{$id_user}'";
     mysqli_query($conexion, $sql);
+
+
+
+
+
+
+
     header("Location: reservas.php");
 }

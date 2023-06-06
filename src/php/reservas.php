@@ -3,11 +3,12 @@ require_once '../config/db_conexion.php';
 require_once './session/session_start.php';
 $msj = "";
 if (isset($_POST['reservar'])) {
-    $fecha = $_POST['fecha'];
-    $hora = $_POST['hora'];
-    $mesa = $_POST['mesas'];
+    $fecha = trim($_POST['fecha']);
+    $hora = trim($_POST['hora']);
+    $mesa = trim($_POST['mesas']);
 
     $sql = "SELECT id FROM usuarios where correo='{$_SESSION["correo"]}' ";
+
 
     $rest = mysqli_query($conexion, $sql);
     $contar = mysqli_num_rows($rest);
@@ -17,33 +18,38 @@ if (isset($_POST['reservar'])) {
     } else {
         $id_user = 0;
     }
-    $sql = null;
 
-
-
-    if (!$mesa == "") {
-        $sql = "INSERT INTO reservas (fecha, hora, mesa, id_usuario) VALUES ('$fecha', '$hora','$mesa','$id_user')";
-        $rest = mysqli_query($conexion, $sql);
-    }
 
 
     $sqlMesa = "SELECT id FROM mesas where mesa='$mesa'";
     $respuestaMesa = mysqli_query($conexion, $sqlMesa);
     $contarMesa = mysqli_num_rows($respuestaMesa);
 
+    if (!$mesa == ""  && !$hora == "") {
 
-    if ($rest && $contarMesa > 0) {
+
         $row = mysqli_fetch_assoc($respuestaMesa);
         $id_mesa = $row["id"];
+
+
+        $sql = "INSERT INTO reservas (fecha, hora, mesa, id_usuario,id_mesa) VALUES ('$fecha', '$hora','$mesa','$id_user','$id_mesa')";
+        $rest = mysqli_query($conexion, $sql);
+
         $sM = "UPDATE mesas SET disponible='false'  WHERE id='{$id_mesa}'";
         $r = mysqli_query($conexion, $sM);
 
-        $msj = '<div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 " role="alert">
-        <span class="font-medium">Reservación completada!</span> .
-      </div>';
+        if ($rest) {
+            $msj = '<div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 " role="alert">
+            <span class="font-medium">Reservación completada!</span> .
+        </div>';
+        } else {
+            $msj = '<div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 " role="alert">
+            <span class="font-medium">Lo sentimos!</span> Ocurrió un error.
+        </div>';
+        }
     } else {
         $msj = '<div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 " role="alert">
-        <span class="font-medium">Lo sentimos!</span> Ya no quedan mesas disponibles.
+        <span class="font-medium">Por favor!</span> Llenar el formulario de reservación correctamente.
       </div>';
     }
 }
@@ -97,8 +103,8 @@ if (isset($_POST['reservar'])) {
     <div class="relative p-4 bg-white ">
         <form class="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-12 lg:items-center" action="" method="post">
             <div class="lg:col-start-2 md:pl-20">
-                <div class="flex flex-col items-center">
-                    <h3 class="text-center text-2xl mb-4">Mi reservación</h3>
+                <h3 class="text-center text-2xl mb-4">Mi reservación</h3>
+                <div class="flex flex-wrap  gap-1 items-center">
                     <?php
                     $sql = "SELECT id FROM usuarios where correo='{$_SESSION["correo"]}' ";
                     $rest = mysqli_query($conexion, $sql);
@@ -141,19 +147,18 @@ if (isset($_POST['reservar'])) {
 
                                 </ul>
                                 <div class="flex gap-2">
-                                    <button type="button" class="py-2 px-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                                        Editar
-                                    </button>
-                                    <a type="button" href="<?php echo 'eliminar.php?id=' . $reserva["id"]; ?>" class=" py-2 px-4 bg-red-400 hover:bg-red-600 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ">
-                                        Cancelar
+
+                                    <a id="eliminar_mesa" type="button" href="<?php echo 'eliminar.php?id=' . $reserva["id"]; ?>" class=" py-2 px-4 bg-red-400 hover:bg-red-600 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ">
+                                        Cancelar reservación
                                     </a>
+
                                 </div>
                             </div><?php
 
                                 }
                             } else {
                                     ?>
-                        <h1>Sin reservaciones</h1>
+                        <h1 class="w-full text-center">Sin reservaciones</h1>
                     <?php
                             }
                     ?>
@@ -173,13 +178,13 @@ if (isset($_POST['reservar'])) {
                             <div class="space-y-4 md:space-y-6">
                                 <div>
                                     <label for="fecha" class="block mb-2 text-sm font-medium text-gray-900 ">Fecha</label>
-                                    <input type="date" name="fecha" id="fecha" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
+                                    <input type="date" value="" name="fecha" id="fecha" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
 
                                 </div>
                                 <div>
                                     <label for="hora" class="block mb-2 text-sm font-medium text-gray-900 ">Hora</label>
                                     <select type="hora" name="hora" id="hora" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5      " required="">
-                                        <option value="">----</option>
+                                        <option value="" selected>----</option>
                                         <option value="18:00">18:00</option>
                                         <option value="19:00">19:00</option>
                                         <option value="20:00">20:00</option>
