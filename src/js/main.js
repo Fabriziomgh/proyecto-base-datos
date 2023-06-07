@@ -1,7 +1,7 @@
 const btn = document.getElementById('btn-salir');
 const desplegar = document.getElementById('desplegar');
 const campoFecha = document.getElementById('fecha');
-const eliminarMesa = document.getElementById('eliminar_mesa');
+const eliminarMesa = document.querySelectorAll('#eliminar_mesa');
 
 btn.addEventListener('click', () => {
    desplegar.classList.toggle('hidden');
@@ -10,11 +10,14 @@ btn.addEventListener('click', () => {
 const fechaActual = new Date().toISOString().split('T', 1).join();
 campoFecha.setAttribute('min', fechaActual);
 
-eliminarMesa.addEventListener('click', () => {
-   const confirmacion = confirm('Seguro que desea cancelar su reservacion?');
-   if (confirmacion) {
-      eliminarMesa.setAttribute(
-         '<?php echo eliminar.php?id= . $reserva["id"]; ?>'
-      );
-   }
+eliminarMesa.forEach((mesa) => {
+   mesa.addEventListener('click', (e) => {
+      console.log(e);
+      const confirmacion = confirm('Seguro que desea cancelar su reservacion?');
+      const id = mesa.dataset.id;
+      console.log(id);
+      if (confirmacion) {
+         mesa.href = `eliminar.php?id=${id}`;
+      }
+   });
 });

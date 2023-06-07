@@ -148,7 +148,7 @@ if (isset($_POST['reservar'])) {
                                 </ul>
                                 <div class="flex gap-2">
 
-                                    <a id="eliminar_mesa" type="button" href="<?php echo 'eliminar.php?id=' . $reserva["id"]; ?>" class=" py-2 px-4 bg-red-400 hover:bg-red-600 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ">
+                                    <a data-id="<?php echo $reserva['id'] ?>" id="eliminar_mesa" type="button" class=" py-2 px-4 bg-red-400 hover:bg-red-600 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ">
                                         Cancelar reservación
                                     </a>
 
