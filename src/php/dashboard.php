@@ -93,9 +93,9 @@ if (!$_SESSION['rol'] == 1) {
                                 <div class="text-end">
                                     <form method="GET" class="flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
                                         <div class=" relative ">
-                                            <input type="text" id="" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="...">
+                                            <input type="text" name="buscador" id="" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="...">
                                         </div>
-                                        <button name="buscar" class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="submit">Buscar</button>
+                                        <input name="buscar" class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="submit" />
 
                                     </form>
                                 </div>
@@ -141,15 +141,16 @@ if (!$_SESSION['rol'] == 1) {
                                                 $offset = ($pagina - 1) * 4;
                                             }
 
+                                            $where = "";
+                                            if (isset($_GET['buscar'])) {
+                                                $buscar = mysqli_real_escape_string($conexion, trim($_GET['buscador']));
+                                                $where = "WHERE nombre LIKE '%$buscar%' OR correo LIKE '%$buscar%'";
+                                            }
 
-                                            $sqlRegistro = "SELECT * FROM `registro_reservas` JOIN `usuarios` ON registro_reservas.id_usuario = usuarios.id LIMIT 4 OFFSET $offset";
+                                            $sqlRegistro = "SELECT * FROM `registro_reservas` JOIN `usuarios` ON registro_reservas.id_usuario = usuarios.id $where LIMIT 4 OFFSET $offset";
                                             $response = mysqli_query($conexion, $sqlRegistro);
 
-                                            if (isset($_GET['buscar'])) {
-                                                $q = trim($_GET['buscar']);
-                                                $sql = "SELECT * FROM `registro_reservas` JOIN `usuarios` ON registro_reservas.id_usuario = usuarios.id WHERE nombre LIKE '%$q%' OR correo LIKE '%$q%' OR fecha LIKE '%$q%' LIMIT 4 OFFSET $offset";
-                                                $resultado = mysqli_query($conexion, $sql);
-                                            }
+
 
 
 
@@ -216,7 +217,7 @@ if (!$_SESSION['rol'] == 1) {
 
 
                                     <?php
-                                    $totalRegistros = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM `registro_reservas` JOIN `usuarios` ON registro_reservas.id_usuario = usuarios.id "));
+                                    $totalRegistros = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM `registro_reservas` JOIN `usuarios` ON registro_reservas.id_usuario = usuarios.id $where  "));
                                     $numPaginas = ($totalRegistros / 4);
 
 
