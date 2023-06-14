@@ -41,7 +41,7 @@ if (!$_SESSION['rol'] == 1) {
                         <div>
                             <img src="../assets/svg/bowl-svgrepo-com.svg">
                         </div>
-                        <span class="mx-4 text-lg font-normal">
+                        <span class="mx-4 text-lg ">
                             General
                         </span>
                         <span class="flex-grow text-right">
@@ -51,7 +51,7 @@ if (!$_SESSION['rol'] == 1) {
                         <div>
                             <img src="../assets/svg/table-svgrepo-com.svg">
                         </div>
-                        <span class="mx-4 text-lg font-normal">
+                        <span class="mx-4 text-lg ">
                             Mesas
                         </span>
                         <span class="flex-grow text-right">
@@ -62,7 +62,7 @@ if (!$_SESSION['rol'] == 1) {
                         <div>
                             <img src="../assets/svg/bowl-svgrepo-com.svg">
                         </div>
-                        <span class="mx-4 text-lg font-normal">
+                        <span class="mx-4 text-lg ">
                             Menú
                         </span>
                         <span class="flex-grow text-right">
@@ -80,181 +80,168 @@ if (!$_SESSION['rol'] == 1) {
                     </a>
                 </div>
             </div>
-            <div>
-                Reservas realizadas
-                <div>
+            <div class="">
+                <div class="">
+                    <h2 class=" text-3xl text-center font-bold">Reservas realizadas</h2>
+                </div>
+                <div class="">
 
                     <div class="container max-w-3xl px-4 mx-auto sm:px-8">
                         <div class="py-8">
+                            <div class="flex flex-row justify-between w-full mb-1 sm:mb-0">
+                                <h2 class="text-2xl leading-tight">Usuarios</h2>
+                                <div class="text-end">
+                                    <form method="GET" class="flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
+                                        <div class=" relative ">
+                                            <input type="text" id="" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="...">
+                                        </div>
+                                        <button name="buscar" class="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="submit">Buscar</button>
+
+                                    </form>
+                                </div>
+                            </div>
                             <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
                                 <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
                                     <table class="min-w-full leading-normal">
                                         <thead>
-                                            <tr>
-                                                <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                            <tr class="font-bold">
+                                                <th scope="col" class="px-5 py-3 text-sm  text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                    ID
+                                                </th>
+                                                <th scope="col" class="px-5 py-3 text-sm  text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                                     Usuario
                                                 </th>
-                                                <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                <th scope="col" class="px-5 py-3 text-sm  text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                                     Rol
                                                 </th>
-                                                <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                                    Creación
+                                                <th scope="col" class="px-5 py-3 text-sm  text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                    Correo
                                                 </th>
-                                                <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                                    Estado
+                                                <th scope="col" class="px-5 py-3 text-sm  text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                    Fecha
                                                 </th>
-                                                <th scope="col" class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                <th scope="col" class="px-5 py-3 text-sm  text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                                    Hora
+                                                </th>
+                                                <th scope="col" class="px-5 py-3 text-sm  text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                                 </th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
-                                            <tr>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                            <?php
 
-                                                        <div class="ml-3">
-                                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                                Jean marc
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        Admin
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        12/09/2020
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <span class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
-                                                        <span aria-hidden="true" class="absolute inset-0 bg-green-200 rounded-full opacity-50">
-                                                        </span>
-                                                        <span class="relative">
-                                                            active
-                                                        </span>
-                                                    </span>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">
-                                                        Edit
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <div class="flex items-center">
 
-                                                        <div class="ml-3">
-                                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                                Marcus coco
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        Designer
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        01/10/2012
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <span class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
-                                                        <span aria-hidden="true" class="absolute inset-0 bg-green-200 rounded-full opacity-50">
-                                                        </span>
-                                                        <span class="relative">
-                                                            active
-                                                        </span>
-                                                    </span>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">
-                                                        Edit
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <div class="flex items-center">
 
-                                                        <div class="ml-3">
-                                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                                Ecric marc
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        Developer
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        02/10/2018
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <span class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
-                                                        <span aria-hidden="true" class="absolute inset-0 bg-green-200 rounded-full opacity-50">
-                                                        </span>
-                                                        <span class="relative">
-                                                            active
-                                                        </span>
-                                                    </span>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">
-                                                        Edit
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <div class="flex items-center">
+                                            $offset = 0;
+                                            $pagina = 1;
 
-                                                        <div class="ml-3">
+                                            if (isset($_GET["pagina"])) {
+                                                $pagina = $_GET["pagina"];
+                                                $offset = ($pagina - 1) * 4;
+                                            }
+
+
+                                            $sqlRegistro = "SELECT * FROM `registro_reservas` JOIN `usuarios` ON registro_reservas.id_usuario = usuarios.id LIMIT 4 OFFSET $offset";
+                                            $response = mysqli_query($conexion, $sqlRegistro);
+
+                                            if (isset($_GET['buscar'])) {
+                                                $q = trim($_GET['buscar']);
+                                                $sql = "SELECT * FROM `registro_reservas` JOIN `usuarios` ON registro_reservas.id_usuario = usuarios.id WHERE nombre LIKE '%$q%' OR correo LIKE '%$q%' OR fecha LIKE '%$q%' LIMIT 4 OFFSET $offset";
+                                                $resultado = mysqli_query($conexion, $sql);
+                                            }
+
+
+
+                                            if (mysqli_num_rows($response) > 0) {
+                                                foreach ($response as $data) {
+                                                    $newDate = date("d/m/Y", strtotime($data['fecha']));
+
+
+
+                                            ?>
+                                                    <tr data-id="<?php echo $data['id'] ?>" class="uppercase">
+                                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                             <p class="text-gray-900 whitespace-no-wrap">
-                                                                Julien Huger
+                                                                <?php echo $data['id'] ?>
                                                             </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        User
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
-                                                        23/09/2010
-                                                    </p>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <span class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
-                                                        <span aria-hidden="true" class="absolute inset-0 bg-green-200 rounded-full opacity-50">
-                                                        </span>
-                                                        <span class="relative">
-                                                            active
-                                                        </span>
-                                                    </span>
-                                                </td>
-                                                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">
-                                                        Edit
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                                        </td>
+                                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                                <?php echo $data['nombre'] ?>
+                                                            </p>
+                                                        </td>
+                                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                                <?php echo $data['rol'] ?>
+                                                            </p>
+                                                        </td>
+                                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                                <?php echo $data['correo'] ?>
+                                                            </p>
+                                                        </td>
+                                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                                <?php echo $newDate ?>
+                                                            </p>
+                                                        </td>
+                                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                            <span class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900">
+                                                                <span aria-hidden="true" class="absolute inset-0 bg-green-200 rounded-full opacity-50">
+                                                                </span>
+                                                                <span class="relative">
+                                                                    <?php echo $data['hora'] ?>
+                                                                </span>
+                                                            </span>
+                                                        </td>
+                                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">
+                                                                <img src="../assets/svg/garbage-svgrepo-com.svg">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+
+                                                }
+                                            } else {
+                                                ?>
+                                                <h1 class="w-full text-center">Sin reservaciones</h1>
+                                            <?php
+                                            }
+                                            ?>
+
                                         </tbody>
                                     </table>
 
+
+                                    <?php
+                                    $totalRegistros = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM `registro_reservas` JOIN `usuarios` ON registro_reservas.id_usuario = usuarios.id "));
+                                    $numPaginas = ($totalRegistros / 4);
+
+
+
+
+
+
+                                    ?>
+
+
+
+
+
+                                </div>
+                                <div class="flex justify-center gap-2">
+                                    <?php
+                                    if ($pagina > 1) {
+                                        echo '<a class="inline-block bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"  href="' . $_SERVER['PHP_SELF'] . '?pagina=' . ($pagina - 1) . '">Anterior</a> ';
+                                    }
+
+                                    if ($pagina < $numPaginas) {
+                                        echo '<a class="inline-block bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"  href="' . $_SERVER['PHP_SELF'] . '?pagina=' . ($pagina + 1) . '">Siguiente</a> ';
+                                    }
+
+                                    ?>
                                 </div>
                             </div>
                         </div>
