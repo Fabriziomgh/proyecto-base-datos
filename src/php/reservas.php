@@ -3,9 +3,10 @@ require_once '../config/db_conexion.php';
 require_once './session/session_start.php';
 $msj = "";
 if (isset($_POST['reservar'])) {
-    $fecha = trim($_POST['fecha']);
-    $hora = trim($_POST['hora']);
-    $mesa = trim($_POST['mesas']);
+    $reg = "/[a-zA-Z0-9\/ ]+/";
+    $fecha = mysqli_real_escape_string($conexion, trim($_POST['fecha']));
+    $hora = mysqli_real_escape_string($conexion, trim($_POST['hora']));
+    $mesa = mysqli_real_escape_string($conexion, trim($_POST['mesas']));
 
     $sql = "SELECT id FROM usuarios where correo='{$_SESSION["correo"]}' ";
 
@@ -24,6 +25,12 @@ if (isset($_POST['reservar'])) {
     $sqlMesa = "SELECT id FROM mesas where mesa='$mesa'";
     $respuestaMesa = mysqli_query($conexion, $sqlMesa);
     $contarMesa = mysqli_num_rows($respuestaMesa);
+
+    if (!preg_match($reg, $fecha)) {
+        echo '<script>alert("Error en el formulario")</script>';
+    }
+    if (!preg_match($reg, $hora)) return;
+    if (!preg_match($reg, $mesa)) return;
 
     if (!$mesa == ""  && !$hora == "") {
 

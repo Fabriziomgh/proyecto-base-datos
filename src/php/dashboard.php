@@ -37,17 +37,8 @@ if (!$_SESSION['rol'] == 1) {
                     </span>
                 </div>
                 <nav class="mt-10 px-6 ">
-                    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors   duration-200  text-gray-600  rounded-lg " href="#">
-                        <div>
-                            <img src="../assets/svg/bowl-svgrepo-com.svg">
-                        </div>
-                        <span class="mx-4 text-lg ">
-                            General
-                        </span>
-                        <span class="flex-grow text-right">
-                        </span>
-                    </a>
-                    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors  duration-200  text-gray-800  rounded-lg  " href="#">
+
+                    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors  duration-200  text-gray-800  rounded-lg  " href="./admin/mesas.php">
                         <div>
                             <img src="../assets/svg/table-svgrepo-com.svg">
                         </div>
@@ -197,7 +188,7 @@ if (!$_SESSION['rol'] == 1) {
                                                             </span>
                                                         </td>
                                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">
+                                                            <a href="eliminarRegistro.php?id=<?php echo $data['id'] ?>" class="text-indigo-600 hover:text-indigo-900">
                                                                 <img src="../assets/svg/garbage-svgrepo-com.svg">
                                                             </a>
                                                         </td>
@@ -255,7 +246,7 @@ if (!$_SESSION['rol'] == 1) {
 
 
 
-
+</body>
 
 
 </html>
