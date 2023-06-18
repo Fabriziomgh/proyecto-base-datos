@@ -49,7 +49,7 @@ if (!$_SESSION['rol'] == 1) {
 
                         </span>
                     </a>
-                    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors  duration-200  text-gray-600  rounded-lg " href="#">
+                    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors  duration-200  text-gray-600  rounded-lg " href="./admin/menu.php">
                         <div>
                             <img src="../assets/svg/bowl-svgrepo-com.svg">
                         </div>
@@ -152,7 +152,7 @@ if (!$_SESSION['rol'] == 1) {
 
 
                                             ?>
-                                                    <tr data-id="<?php echo $data['id'] ?>" class="uppercase">
+                                                    <tr class="id-registro uppercase">
                                                         <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                             <p class="text-gray-900 whitespace-no-wrap">
                                                                 <?php echo $data['id'] ?>
@@ -187,8 +187,8 @@ if (!$_SESSION['rol'] == 1) {
                                                                 </span>
                                                             </span>
                                                         </td>
-                                                        <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                            <a href="eliminarRegistro.php?id=<?php echo $data['id'] ?>" class="text-indigo-600 hover:text-indigo-900">
+                                                        <td class=" px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                            <a data-id="<?php echo $data['id'] ?>" href="" class="btn-eliminar-registro text-indigo-600 hover:text-indigo-900">
                                                                 <img src="../assets/svg/garbage-svgrepo-com.svg">
                                                             </a>
                                                         </td>
@@ -243,7 +243,7 @@ if (!$_SESSION['rol'] == 1) {
             </div>
         </div>
     </div>
-
+    <script src="../js/main.js"></script>
 
 
 </body>
