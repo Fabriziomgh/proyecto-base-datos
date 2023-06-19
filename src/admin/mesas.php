@@ -1,6 +1,6 @@
 <?php
-require_once '../../config/db_conexion.php';
-require_once '../session/session_start.php';
+require_once '../config/db_conexion.php';
+require_once '../php/session/session_start.php';
 
 if (!$_SESSION['rol'] == 1) {
     header('location: 404.php');
@@ -15,8 +15,8 @@ if (!$_SESSION['rol'] == 1) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/output.css">
-    <link rel="icon" href="../../assets/svg/restaurant-svgrepo-com.svg">
+    <link rel="stylesheet" href="../css/output.css">
+    <link rel="icon" href="../assets/svg/restaurant-svgrepo-com.svg">
     <title>dashboard</title>
 </head>
 
@@ -27,7 +27,7 @@ if (!$_SESSION['rol'] == 1) {
         <div class="flex   sm:flex-row ">
             <div class="h-screen bg-gray-200  w-72">
                 <div class="flex items-center justify-start mx-6 mt-10">
-                    <img class="w-12" src="../../assets/svg/restaurant-svgrepo-com.svg">
+                    <img class="w-12" src="../assets/svg/restaurant-svgrepo-com.svg">
                     <span class="text-gray-600  ml-4 text-2xl font-bold">
                         Admin
                     </span>
@@ -35,9 +35,9 @@ if (!$_SESSION['rol'] == 1) {
                 <nav class="mt-10 px-6 ">
 
 
-                    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors  duration-200  text-gray-800  rounded-lg  " href="../dashboard.php">
+                    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors  duration-200  text-gray-800  rounded-lg  " href="../php/dashboard.php">
                         <div>
-                            <img src="../../assets/svg/flecha-izquierda.svg">
+                            <img src="../assets/svg/flecha-izquierda.svg">
                         </div>
                         <span class="mx-4 text-lg ">
                             General
@@ -46,9 +46,9 @@ if (!$_SESSION['rol'] == 1) {
 
                         </span>
                     </a>
-                    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors  duration-200  text-gray-600  rounded-lg " href="#">
+                    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors  duration-200  text-gray-600  rounded-lg " href="./menu.php">
                         <div>
-                            <img src="../../assets/svg/bowl-svgrepo-com.svg">
+                            <img src="../assets/svg/bowl-svgrepo-com.svg">
                         </div>
                         <span class="mx-4 text-lg ">
                             Menú
@@ -61,7 +61,7 @@ if (!$_SESSION['rol'] == 1) {
                 </nav>
                 <div class="absolute bottom-0 my-10">
                     <a class="text-gray-600  hover:text-gray-800  transition-colors duration-200 flex items-center py-2 px-8" href="../php/session/session_destroy.php">
-                        <img src="../../assets/svg/flecha-izquierda.svg">
+                        <img src="../assets/svg/flecha-izquierda.svg">
                         <span class="mx-4 font-medium">
                             Salir
                         </span>
@@ -130,7 +130,7 @@ if (!$_SESSION['rol'] == 1) {
                                                                                         echo $clases;
                                                                                         ?> rounded">
                                     <span class="p-2  rounded-lg">
-                                        <img src="../../assets/svg/table-svgrepo-com.svg">
+                                        <img src="../assets/svg/table-svgrepo-com.svg">
                                     </span>
                                     <div class="flex items-center justify-between w-full ml-2">
 

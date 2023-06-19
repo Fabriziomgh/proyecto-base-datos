@@ -4,6 +4,26 @@ const campoFecha = document.getElementById('fecha');
 const eliminarMesa = document.querySelectorAll('#eliminar_mesa');
 const formMesa = document.querySelector('#form-mesa');
 const btnEliminarRegistro = document.querySelectorAll('.btn-eliminar-registro');
+const modal = document.getElementById('staticModal');
+const btnOpenModal = document.getElementById('btn-open-modal');
+const btnCloseModal = document.getElementById('btn-close-modal');
+const modalEliminarMenu = document.getElementById('modal-eliminar-menu');
+const btnOpenModalMenu = document.getElementById('btn-open-modal-eliminar');
+const btnCloseModalMenu = document.getElementById('btn-close-modal-eliminar');
+
+btnOpenModalMenu?.addEventListener('click', () => {
+   modalEliminarMenu.classList.remove('hidden');
+});
+btnCloseModalMenu?.addEventListener('click', () => {
+   modalEliminarMenu.classList.add('hidden');
+});
+
+btnOpenModal?.addEventListener('click', () => {
+   modal.classList.remove('hidden');
+});
+btnCloseModal?.addEventListener('click', () => {
+   modal.classList.add('hidden');
+});
 
 const eliminarHandler = function (item, text, archivo) {
    const confirmacion = confirm(`${text}`);
@@ -29,7 +49,6 @@ eliminarMesa.forEach((mesa) => {
       );
    });
 });
-console.log(btnEliminarRegistro);
 
 btnEliminarRegistro.forEach((registro) => {
    registro?.addEventListener('click', () => {
