@@ -97,7 +97,7 @@ if (isset($_POST['entrar'])) {
                 </div>
                 <div class="flex items-center mb-6 -mt-4">
                     <div class="flex ml-auto">
-                        <a href="#" class="inline-flex text-xs font-thin text-gray-500 sm:text-sm  hover:text-gray-700 ">
+                        <a href="./recuperarContraseña.php" class="inline-flex text-xs font-thin text-gray-500 sm:text-sm  hover:text-gray-700 ">
                             Olvidó su contraseña?
                         </a>
                     </div>
